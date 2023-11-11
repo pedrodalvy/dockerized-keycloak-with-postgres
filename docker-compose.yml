@@ -1,0 +1,33 @@
+version: "3.8"
+
+volumes:
+  postgres:
+    driver: local
+
+services:
+  postgres:
+    image: docker.io/bitnami/postgresql:16.1.0
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgres:/bitnami/postgresql'
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRESQL_USERNAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  keycloak:
+    image: docker.io/bitnami/keycloak:22.0.5
+    container_name: keycloak
+    depends_on:
+      postgres:
+          condition: service_healthy
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    env_file:
+      - .env
