@@ -23,6 +23,7 @@ services:
   keycloak:
     image: docker.io/bitnami/keycloak:22.0.5
     container_name: keycloak
+    restart: always
     depends_on:
       postgres:
           condition: service_healthy
