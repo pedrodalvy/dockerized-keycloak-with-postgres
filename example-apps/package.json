@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "authorization-code": "ts-node-dev -r tsconfig-paths/register --clear --quiet --respawn --transpile-only authorization-code-flow/src/index.ts"
+    "authorization-code": "ts-node-dev -r tsconfig-paths/register --clear --quiet --respawn --transpile-only authorization-code-flow/src/index.ts",
+    "lint": "gts lint"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,8 @@
     "@types/express": "4.17.21",
     "ts-node-dev": "2.0.0",
     "tsconfig-paths": "4.2.0",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "gts": "5.2.0",
+    "@types/node": "20.8.2"
   }
 }
